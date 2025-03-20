@@ -1,1 +1,32 @@
+// Welcome alert
+alert("Welcome to our store!");
 
+// Prompt for user details
+const name = prompt("What is your name?");
+const item = prompt("What would you like to order?");
+let quantity = prompt("How many would you like? (1-99)");
+
+quantity = parseInt(quantity);
+if (isNaN(quantity) || quantity < 1 || quantity > 99) {
+    quantity = 1; // Default to 1 if invalid input
+}
+
+// Get current date and expected arrival date
+const today = new Date();
+const arrivalDate = new Date();
+arrivalDate.setDate(today.getDate() + 7);
+
+// Greet based on time of day
+const hour = today.getHours();
+let greeting;
+if (hour < 12) {
+    greeting = "Good Morning";
+} else if (hour < 18) {
+    greeting = "Good Afternoon";
+} else {
+    greeting = "Good Evening";
+}
+
+document.getElementById("greeting").textContent = `${greeting} ${name}, Thank you for Ordering!`;
+document.getElementById("orderDetails").textContent = `You ordered ${quantity} ${item}(s).`;
+document.getElementById("arrivalDate").textContent = `Your order will arrive on ${arrivalDate.toDateString()}.`;
