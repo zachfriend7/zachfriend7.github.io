@@ -6,32 +6,35 @@
     <title>Order Confirmation</title>
 </head>
 <body>
-    <h2 id="welcome"></h2>
-    <p id="order"></p>
-    <p id="arrival"></p>
+    <h2 id="header">Order Summary</h2>
+    <p id="customerGreeting"></p>
+    <p id="orderDetails"></p>
+    <p id="deliveryInfo"></p>
 
     <script>
-        alert("Welcome to our store!");
+       
+        const name = prompt("Please enter your name:");
+        const product = prompt("What product would you like to buy?");
+        let qty = prompt("How many would you like to order?");
 
-        const customer = prompt("Enter your name:");
-        const product = prompt("What would you like to order?");
-        let quantity = prompt("How many? (1-99)");
-
-        quantity = parseInt(quantity);
-        if (isNaN(quantity) || quantity < 1 || quantity > 99) {
-            quantity = 1;
+        qty = parseInt(qty);
+        if (isNaN(qty) || qty < 1 || qty > 99) {
+            qty = 1;
         }
 
-        const today = new Date();
-        const arrival = new Date();
-        arrival.setDate(today.getDate() + 7);
+     
+        const now = new Date();
+        const deliveryDate = new Date();
+        deliveryDate.setDate(now.getDate() + 7);
 
-        const time = today.getHours();
-        const greeting = time < 12 ? "Good Morning" : time < 18 ? "Good Afternoon" : "Good Evening";
+   
+        const timeOfDay = now.getHours();
+        const greetingMessage = timeOfDay < 12 ? "Good Morning" : timeOfDay < 18 ? "Good Afternoon" : "Good Evening";
 
-        document.getElementById("welcome").textContent = `${greeting}, ${customer}! Thank you for your order.`;
-        document.getElementById("order").textContent = `You ordered ${quantity} ${product}(s).`;
-        document.getElementById("arrival").textContent = `Expected arrival: ${arrival.toDateString()}`;
+        document.getElementById("header").textContent = "Thank you for your order!";
+        document.getElementById("customerGreeting").textContent = `${greetingMessage}, ${name}!`;
+        document.getElementById("orderDetails").textContent = `You have ordered ${qty} ${product}(s).`;
+        document.getElementById("deliveryInfo").textContent = `Your order will arrive on: ${deliveryDate.toDateString()}`;
     </script>
 </body>
 </html>
