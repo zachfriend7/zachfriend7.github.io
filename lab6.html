@@ -40,7 +40,26 @@
 <br />
 <button onclick="CatFacts()">Click for Cat Facts</button>
 <br />
+<table id="facts" style="display: none" border />
 
   <script> 
-  const CatFacts = async () => {
-        const req = await fetch("https://brianobruno.github.io/cats.json");
+  const fetchData = async () => {
+  try {
+    const res = await fetch("https://brianobruno.github.io/cats.json");
+    if (!res.ok) await Error("Fetch failed");
+    const { facts, catPhoto } = await res.json();
+    const table = document.getElementById("facts");
+    const img = document.getElementById("cat");
+    table.innerHTML = "";
+    table.style.display = "block";
+    facts
+      .sort((a, b) => a.factId - b.factId)
+      .forEach(({ factId, text }) => {
+        table.innerHTML += `<tr><td>${factId}</td><td>${text}</td></tr>`;
+      });
+    if (img) img.src = catPhoto;
+  } catch (err) {
+    alert("Error loading cat data.");
+    console.error(err);
+  }
+};
