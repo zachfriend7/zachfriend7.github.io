@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cat Facts API</title>
     <style>
-        body {
-            font-family: Arial;
-            text-align: center;
-            margin: 20px;
-        }
-        table {
-            width: 90%;
-            margin: 0 auto 20px auto;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 10px;
-        }
-        img {
-            width: 300px;
-            height: auto;
-            margin-top: 20px;
-        }
-        button {
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin: 20px;
+      }
+      table {
+        width: 90%;
+        margin: 0 auto 20px auto;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
+      img {
+        width: 300px;
+        height: auto;
+        margin-top: 20px;
+      }
+      button {
         font-size: 18px;
         color: white;
         background-color: blue;
@@ -33,33 +34,36 @@
         cursor: pointer;
       }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <img id="catimage" src="https://placehold.co/400" />
+    <br />
+    <button onclick="CatFacts()">Click for Cat Facts</button>
+    <br />
+    <table id="facts" style="display: none"></table>
 
-<img id="catimage" src="https://placehold.co/400" />
-<br />
-<button onclick="CatFacts()">Click for Cat Facts</button>
-<br />
-<table id="facts" style="display: none" border />
- </div>
-  <script> 
-  const fetchData = async () => {
-  try {
-    const res = await fetch("https://brianobruno.github.io/cats.json");
-    if (!res.ok) await Error("Fetch failed");
-    const { facts, catPhoto } = await res.json();
-    const table = document.getElementById("facts");
-    const img = document.getElementById("cat");
-    table.innerHTML = "";
-    table.style.display = "block";
-    facts
-      .sort((a, b) => a.factId - b.factId)
-      .forEach(({ factId, text }) => {
-        table.innerHTML += `<tr><td>${factId}</td><td>${text}</td></tr>`;
-      });
-    if (img) img.src = catPhoto;
-  } catch (err) {
-    alert("Error loading cat data.");
-    console.error(err);
-  }
-};
+    <script>
+      const CatFacts = async () => {
+        try {
+          const res = await fetch("https://brianobruno.github.io/cats.json");
+          if (!res.ok) throw new Error("Fetch failed");
+          const { facts, catPhoto } = await res.json();
+          const table = document.getElementById("facts");
+          const img = document.getElementById("catimage");
+          table.innerHTML = "";
+          table.style.display = "block";
+          facts
+            .sort((a, b) => a.factId - b.factId)
+            .forEach(({ factId, text }) => {
+              table.innerHTML += `<tr><td>${factId}</td><td>${text}</td></tr>`;
+            });
+          if (img) img.src = catPhoto;
+        } catch (err) {
+          alert("Error loading cat data.");
+          console.error(err);
+        }
+      };
+    </script>
+  </body>
+</html>
+
