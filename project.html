@@ -12,12 +12,14 @@
   </style>
 </head>
 <body class="bg-light">
+  
   <nav class="navbar navbar-light position-relative" style="background-color: #e9ecef;">
     <div class="container position-relative">
       <span class="navbar-brand mx-auto navbar-center font-weight-bold">Dog API</span>
       <a class="nav-link ml-auto" href="dogbreed.html">Choose A Dog Breed</a>
     </div>
   </nav>
+  
   <div class="container text-center mt-5">
     <h1>Get a Random Image of a Dog</h1>
     <button id="randomDogBtn" class="btn btn-primary mt-3">Click Me for Random Dog Image!</button>
@@ -25,6 +27,7 @@
       <img id="dogImage" class="img-fluid rounded" style="max-height:400px;">
     </div>
   </div>
+  
   <script>
     document.getElementById('randomDogBtn').onclick = () => {
       fetch('https://dog.ceo/api/breeds/image/random')
