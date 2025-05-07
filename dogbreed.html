@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dog Breed Selection</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-light" style="background-color:#e9ecef;">
+    <div class="container position-relative">
+      <span class="navbar-brand font-weight-bold navbar-center">Dog API</span>
+      <a href="index.html" class="nav-link position-absolute" style="right:15px;">Home</a>
+    </div>
+  </nav>
 
+  <div class="container text-center mt-5">
+    <h1>Choose a Dog Breed</h1>
+    <select id="breedSelect" class="form-control w-50 mx-auto mt-3"></select>
+    <button id="showDog" class="btn btn-primary mt-3">Click for Dog Image</button>
+    <div class="mt-4">
+      <img id="dogImg" class="img-fluid rounded" style="max-height:400px;">
+    </div>
+  </div>
+
+  <script>
+    fetch('https://dog.ceo/api/breeds/list/all')
+      .then(res => res.json())
+      .then(data => {
+        for (let breed in data.message) {
+          let option = new Option(breed, breed);
+          breedSelect.add(option);
+        }
+      });
+
+    showDog.onclick = () => {
+      let breed = breedSelect.value;
+      fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+        .then(res => res.json())
+        .then(data => dogImg.src = data.message);
+    };
+  </script>
+</body>
+</html>
