@@ -5,19 +5,19 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
-  <nav class="navbar navbar-light bg-light justify-content-between px-3">
-    <a class="navbar-brand font-weight-bold" href="index.html">Dog API</a>
-    <a class="nav-link" href="breed.html">Choose A Dog Breed</a>
+  <nav class="navbar navbar-light" style="background-color: #e9ecef;">
+    <div class="container justify-content-center">
+      <span class="navbar-brand font-weight-bold mx-auto">Dog API</span>
+    </div>
   </nav>
-
   <div class="container text-center mt-5">
     <h1>Get a Random Image of a Dog</h1>
     <button id="randomDogBtn" class="btn btn-primary mt-3">Click Me for Random Dog Image!</button>
     <div class="mt-4">
       <img id="dogImage" class="img-fluid rounded" style="max-height:400px;">
     </div>
+    <a href="breed.html" class="btn btn-link mt-3">Choose A Dog Breed →</a>
   </div>
-
   <script>
     document.getElementById('randomDogBtn').onclick = () => {
       fetch('https://dog.ceo/api/breeds/image/random')
