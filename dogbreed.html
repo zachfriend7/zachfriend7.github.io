@@ -13,12 +13,11 @@
 </head>
 <body class="bg-light">
   <nav class="navbar navbar-light" style="background-color:#e9ecef;">
-    <div class="container position-relative">
-      <span class="navbar-brand font-weight-bold navbar-center">Dog API</span>
-      <a href="project.html" class="nav-link position-absolute" style="right:15px;">Home Page</a>
+    <div class="container d-flex justify-content-between">
+      <span class="navbar-brand font-weight-bold">Dog API</span>
+      <a href="index.html" class="nav-link">Home Page</a>
     </div>
   </nav>
-
   <div class="container text-center mt-5">
     <h1>Choose a Dog Breed</h1>
     <select id="breedSelect" class="form-control w-50 mx-auto mt-3"></select>
@@ -27,7 +26,6 @@
       <img id="dogImg" class="img-fluid rounded" style="max-height:400px;">
     </div>
   </div>
-
   <script>
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(res => res.json())
