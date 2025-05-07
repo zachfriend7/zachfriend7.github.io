@@ -1,16 +1,31 @@
+#Random Dog Image Page
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <meta charset="UTF-8">
-  <title>Dog Pictures</title>
-  <style>
-    img { max-height: 500px; margin-top: 30px; }
-    section { margin-bottom: 80px; }
-  </style>
+  <title>Dog API</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body style="padding: 40px; text-align: center;">
-  <h1 style="margin-bottom: 40px;"> Dog Images </h1>
+<body class="bg-light">
+  <nav class="navbar navbar-light bg-light justify-content-between px-3">
+    <a class="navbar-brand font-weight-bold" href="index.html">Dog API</a>
+    <a class="nav-link" href="breed.html">Choose A Dog Breed</a>
+  </nav>
+
+  <div class="container text-center mt-5">
+    <h1>Get a random image of a dog</h1>
+    <button id="randomDogBtn" class="btn btn-primary mt-3">Click me for random dog image!</button>
+    <div class="mt-4">
+      <img id="dogImage" class="img-fluid rounded" style="max-height:400px;">
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('randomDogBtn').onclick = () => {
+      fetch('https://dog.ceo/api/breeds/image/random')
+        .then(res => res.json())
+        .then(data => document.getElementById('dogImage').src = data.message);
+    };
+  </script>
 </body>
 </html>
 
