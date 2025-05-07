@@ -3,11 +3,19 @@
 <head>
   <title>Dog API</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
 </head>
 <body class="bg-light">
-  <nav class="navbar navbar-light" style="background-color: #e9ecef;">
-    <div class="container justify-content-center">
-      <span class="navbar-brand font-weight-bold mx-auto">Dog API</span>
+  <nav class="navbar navbar-light position-relative" style="background-color: #e9ecef;">
+    <div class="container position-relative">
+      <span class="navbar-brand font-weight-bold navbar-center">Dog API</span>
+      <a href="breed.html" class="nav-link position-absolute" style="right: 15px;">Choose A Dog Breed</a>
     </div>
   </nav>
   <div class="container text-center mt-5">
@@ -16,7 +24,6 @@
     <div class="mt-4">
       <img id="dogImage" class="img-fluid rounded" style="max-height:400px;">
     </div>
-    <a href="breed.html" class="btn btn-link mt-3">Choose A Dog Breed →</a>
   </div>
   <script>
     document.getElementById('randomDogBtn').onclick = () => {
