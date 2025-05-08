@@ -4,34 +4,47 @@
   <title>Dog API</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
+    body {
+      background-image: url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+    }
+
     .navbar-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
+
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.75);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 3rem;
+    }
   </style>
 </head>
-<body class="bg-light">
-  
+<body>
+
   <nav class="navbar navbar-light position-relative" style="background-color: #e9ecef;">
     <div class="container position-relative">
       <span class="navbar-brand mx-auto navbar-center font-weight-bold">Dog API</span>
       <a class="btn btn-outline-primary ml-auto" href="dogbreed.html">Choose A Dog Breed</a>
     </div>
   </nav>
-  
-  <div class="container text-center mt-5">
+
+  <div class="container text-center content-box">
     <h1>Get a Random Image of a Dog</h1>
-    <p class="lead mt-3">
-      For those who love dogs, enjoy a near limitless amount of dog images. <br>
-      For those who know exactly what dog breed they like, explore a large selection of breeds and enjoy!
-    </p>
+    <p class="lead">For those who love dogs, enjoy a near limitless amount of dog images. For those who know exactly what dog breed they like, enjoy the large amount of dog breeds to choose from and enjoy!</p>
     <button id="randomDogBtn" class="btn btn-primary mt-3">Click Me for Random Dog Image!</button>
     <div class="mt-4">
       <img id="dogImage" class="img-fluid rounded" style="max-height:400px;">
     </div>
   </div>
-  
+
   <script>
     document.getElementById('randomDogBtn').onclick = () => {
       fetch('https://dog.ceo/api/breeds/image/random')
@@ -39,5 +52,7 @@
         .then(data => document.getElementById('dogImage').src = data.message);
     };
   </script>
+
 </body>
 </html>
+
