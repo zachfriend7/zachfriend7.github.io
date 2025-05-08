@@ -4,28 +4,50 @@
   <title>Dog Breed Selection</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
+
+    body {
+      background-image: url('https://img.freepik.com/free-photo/cute-white-little-puppy-isolated-blue_23-2148985909.jpg?t=st=1746747020~exp=1746750620~hmac=931eeba4515c59f4dc864fafd5cbf993619c24ab97cdd6005aa44d4d916ac279&w=996');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
     .navbar-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 3rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #333;
+    }
   </style>
 </head>
-<body class="bg-light">
+<body>
   <nav class="navbar navbar-light" style="background-color:#e9ecef;">
     <div class="container d-flex justify-content-between">
       <span class="navbar-brand font-weight-bold navbar-center">Dog API</span>
       <a href="project.html" class="btn btn-outline-primary ml-auto">Home Page</a>
     </div>
   </nav>
-  <div class="container text-center mt-5">
+
+  <div class="content-box text-center">
     <h1>Choose a Dog Breed</h1>
+    <p>Select a breed and view a random image of that dog!</p>
     <select id="breedSelect" class="form-control w-50 mx-auto mt-3"></select>
     <button id="showDog" class="btn btn-primary mt-3">Click for Dog Image!</button>
     <div class="mt-4">
       <img id="dogImg" class="img-fluid rounded" style="max-height:400px;">
     </div>
   </div>
+
   <script>
     fetch('https://dog.ceo/api/breeds/list/all')
       .then(res => res.json())
@@ -35,12 +57,11 @@
           breedSelect.add(option);
         }
       });
-
-    showDog.onclick = () => {
-      let breed = breedSelect.value;
+    document.getElementById('showDog').onclick = () => {
+      let breed = document.getElementById('breedSelect').value;
       fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
         .then(res => res.json())
-        .then(data => dogImg.src = data.message);
+        .then(data => document.getElementById('dogImg').src = data.message);
     };
   </script>
 </body>
